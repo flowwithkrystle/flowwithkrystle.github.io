@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLOW with Krystle — Financial. Literacy. Ownership. Wellness.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:       #061A0E;
+    --forest:     #0A2E1A;
+    --mid:        #1B5E35;
+    --teal:       #0D7A55;
+    --mint:       #2DC87A;
+    --gold:       #C9A84C;
+    --light-gold: #F5E6B8;
+    --white:      #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(6,26,14,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,0.18); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-logo { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+  .nav-logo-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; }
+  .nav-logo-name span { color: var(--gold); }
+  .nav-logo-sub { font-size: 9.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,168,76,0.5); }
+  .nav-cta { background: var(--gold); color: var(--dark); padding: 10px 24px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--light-gold); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 110px 5% 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 60% at 75% 45%, rgba(13,122,85,0.16) 0%, transparent 70%), radial-gradient(ellipse 35% 50% at 5% 85%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: center; position: relative; z-index: 1; }
+  @media(max-width:900px){ .hero-inner { grid-template-columns: 1fr; gap: 48px; } }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); padding: 6px 14px; margin-bottom: 28px; }
+  .eyebrow-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
+  .hero-eyebrow span { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(48px, 5.5vw, 76px); font-weight: 900; line-height: 0.95; margin-bottom: 10px; }
+  .hero-title .gold { color: var(--gold); }
+  .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(16px, 1.8vw, 21px); font-weight: 700; color: rgba(255,255,255,0.4); margin-bottom: 20px; letter-spacing: 0.04em; }
+  .hero-pos { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.75; max-width: 480px; margin-bottom: 32px; border-left: 3px solid var(--gold); padding-left: 16px; font-style: italic; }
+  .hero-acronym { display: flex; flex-wrap: wrap; margin-bottom: 36px; }
+  .ac-item { padding: 8px 16px; border: 1px solid rgba(201,168,76,0.2); border-right: none; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .ac-item:first-child { border-left: 3px solid var(--gold); }
+  .ac-item:last-child { border-right: 1px solid rgba(201,168,76,0.2); }
+  .ac-item .l { color: var(--gold); font-size: 13px; display: block; margin-bottom: 2px; }
+  .hero-btns { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-gold { background: var(--gold); color: var(--dark); padding: 16px 32px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; display: inline-block; }
+  .btn-gold:hover { background: var(--light-gold); }
+  .btn-ghost-text { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; }
+  .btn-ghost-text:hover { color: var(--white); }
+  .brand-card { background: #0A2E1A; border: 1px solid rgba(201,168,76,0.2); border-left: 5px solid var(--gold); padding: 40px 36px; }
+  .brand-flow { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; color: var(--white); letter-spacing: 8px; line-height: 1; margin-bottom: 10px; }
+  .brand-krystle { font-size: 17px; color: var(--gold); letter-spacing: 5px; margin-bottom: 14px; }
+  .brand-rule { height: 1px; background: rgba(201,168,76,0.3); margin-bottom: 14px; }
+  .brand-ac { font-size: 11px; color: var(--mint); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+  .live-badge { display: flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); padding: 12px 16px; }
+  .live-dot { width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: lp 1.4s infinite; flex-shrink: 0; }
+  @keyframes lp { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);} }
+  .live-badge span { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* SHARED */
+  .section { padding: 100px 5%; }
+  .si { max-width: 1200px; margin: 0 auto; }
+  .slabel { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); margin-bottom: 14px; }
+  .stitle { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .stitle .gold { color: var(--gold); }
+  .ssub { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 560px; line-height: 1.75; margin-bottom: 48px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+  @media(max-width:768px){ .about-grid { grid-template-columns: 1fr; } }
+  .acard { background: var(--dark); border: 1px solid rgba(201,168,76,0.2); padding: 36px; text-align: center; }
+  .avatar { width: 88px; height: 88px; margin: 0 auto 18px; background: linear-gradient(135deg, var(--mid), var(--teal)); border: 2px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--gold); }
+  .aname { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .atitle { font-size: 12px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .adivider { height: 1px; background: rgba(201,168,76,0.2); margin-bottom: 20px; }
+  .astats { text-align: left; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .astat { display: flex; align-items: baseline; gap: 8px; }
+  .astat-n { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--mint); flex-shrink: 0; }
+  .astat-l { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+  .apills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .apill { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); padding: 5px 12px; }
+  .aquote { font-family: 'Playfair Display', serif; font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; line-height: 1.4; color: var(--white); margin-bottom: 28px; }
+  .aquote .gold { color: var(--gold); }
+  .astory { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.85; margin-bottom: 18px; }
+
+  /* LIVE CLASS */
+  .live-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
+  @media(max-width:900px){ .live-grid { grid-template-columns: 1fr; } }
+  .ecard { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); margin-bottom: 32px; }
+  .ecard-hdr { background: rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 10px 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .ecard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 16px 20px; }
+  .edtl { display: flex; flex-direction: column; gap: 4px; padding-right: 16px; border-right: 1px solid rgba(201,168,76,0.12); }
+  .edtl:last-child { border-right: none; padding-right: 0; padding-left: 16px; }
+  .edtl:nth-child(2) { padding-left: 16px; }
+  .edtl-lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,168,76,0.55); }
+  .edtl-val { font-size: 15px; font-weight: 700; color: var(--white); }
+  .edtl-sub { font-size: 11px; color: rgba(255,255,255,0.35); }
+  .for-lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 12px; }
+  .for-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .for-pill { display: flex; align-items: flex-start; gap: 8px; background: rgba(13,122,85,0.1); border: 1px solid rgba(13,122,85,0.25); padding: 8px 12px; font-size: 12.5px; color: rgba(255,255,255,0.78); line-height: 1.4; }
+  .for-pill::before { content: '→'; color: var(--mint); font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .cur-lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 12px; }
+  .cur-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cur-item { display: flex; align-items: flex-start; gap: 10px; }
+  .chk { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; background: rgba(45,200,122,0.12); border: 1px solid rgba(45,200,122,0.3); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--mint); font-weight: 700; }
+  .cur-item span { font-size: 13px; color: rgba(255,255,255,0.78); line-height: 1.45; }
+  .pcard { background: var(--forest); border: 1px solid rgba(201,168,76,0.2); position: sticky; top: 88px; }
+  .pcard-top { background: var(--mid); padding: 20px 24px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .pcard-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .pcard-amt { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .pcard-desc { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .pcard-body { padding: 24px; }
+  .inc-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: rgba(255,255,255,0.7); }
+  .inc-item:last-child { border-bottom: none; margin-bottom: 20px; }
+  .inc-icon { color: var(--mint); font-size: 14px; flex-shrink: 0; }
+  .reg-btn { display: block; width: 100%; text-align: center; background: var(--gold); color: var(--dark); padding: 16px; font-size: 14px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; margin-bottom: 12px; }
+  .reg-btn:hover { background: var(--light-gold); }
+  .spots { display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); padding: 10px; margin-bottom: 16px; }
+  .spots-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: glow 2s infinite; }
+  @keyframes glow { 0%,100%{opacity:1;}50%{opacity:0.35;} }
+  .spots span { font-size: 11.5px; font-weight: 600; color: var(--gold); }
+  .pnote { font-size: 11px; color: rgba(255,255,255,0.28); text-align: center; line-height: 1.6; }
+
+  /* MORE WAYS */
+  .more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media(max-width:768px){ .more-grid { grid-template-columns: 1fr; } }
+  .mcard { background: var(--dark); border: 1px solid rgba(201,168,76,0.18); display: flex; flex-direction: column; }
+  .mcard-top { padding: 28px 28px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); flex: 1; }
+  .mcard-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); margin-bottom: 10px; }
+  .mcard-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+  .mcard-title .gold { color: var(--gold); }
+  .mcard-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 20px; }
+  .mcard-feat { display: flex; flex-direction: column; gap: 6px; }
+  .mcard-feat-item { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,0.65); }
+  .mcard-feat-item::before { content: '✓'; color: var(--mint); font-weight: 700; font-size: 12px; flex-shrink: 0; }
+  .mcard-bot { padding: 20px 28px; border-top: 1px solid rgba(201,168,76,0.12); }
+  .mprice { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+  .mprice-n { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .mprice-d { font-size: 12px; color: rgba(255,255,255,0.38); }
+  .mbtn { display: block; width: 100%; text-align: center; padding: 13px; font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+  .mbtn-solid { background: var(--gold); color: var(--dark); }
+  .mbtn-solid:hover { background: var(--light-gold); }
+  .cs-tag { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); padding: 3px 10px; margin-bottom: 8px; }
+
+  /* POSITIONING */
+  .pos-section { background: var(--mid); padding: 80px 5%; }
+  .pos-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .pos-text { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 36px); font-weight: 700; line-height: 1.55; color: var(--white); }
+  .pos-text .gold { color: var(--gold); }
+  .pos-attr { margin-top: 24px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  /* FINAL CTA */
+  .final { background: var(--dark); padding: 100px 5%; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+  .final-inner { max-width: 700px; margin: 0 auto; }
+  .final-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+  .final-title .gold { color: var(--gold); }
+  .final-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 40px; }
+  .final-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .fbtn-p { background: var(--gold); color: var(--dark); padding: 18px 40px; font-size: 14px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .fbtn-p:hover { background: var(--light-gold); }
+  .fbtn-s { border: 1.5px solid rgba(201,168,76,0.35); color: var(--gold); padding: 18px 28px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+  .fbtn-s:hover { background: var(--gold); color: var(--dark); }
+  .final-note { font-size: 11.5px; color: rgba(255,255,255,0.25); }
+
+  /* FOOTER */
+  footer { background: #040F07; border-top: 1px solid rgba(201,168,76,0.12); padding: 28px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--gold); }
+  .footer-ac { font-size: 10.5px; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; }
+  .footer-handle { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .fu { animation: fadeUp 0.7s ease both; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; } .d3 { animation-delay: 0.36s; } .d4 { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-name">FLOW <span>with Krystle</span></div>
+    <div class="nav-logo-sub">Financial · Literacy · Ownership · Wellness</div>
+  </a>
+  <a href="#register" class="nav-cta">Register — April 29th →</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="fu">
+      <div class="hero-eyebrow"><div class="eyebrow-dot"></div><span>FLOW with Krystle</span></div>
+      <div class="hero-title">Investing<br><span class="gold">101</span></div>
+      <div class="hero-subtitle">Financial. Literacy. Ownership. Wellness.</div>
+      <div class="hero-pos">You can't build wealth if you're not well — and you can't be well if money is keeping you up at night.</div>
+      <div class="hero-acronym">
+        <div class="ac-item"><span class="l">F</span>inancial</div>
+        <div class="ac-item"><span class="l">L</span>iteracy</div>
+        <div class="ac-item"><span class="l">O</span>wnership</div>
+        <div class="ac-item"><span class="l">W</span>ellness</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#register" class="btn-gold">Join Live — April 29th →</a>
+        <a href="#more" class="btn-ghost-text">See all offerings</a>
+      </div>
+    </div>
+    <div class="fu d2">
+      <div class="brand-card">
+        <div class="brand-flow">FLOW</div>
+        <div class="brand-krystle">with Krystle</div>
+        <div class="brand-rule"></div>
+        <div class="brand-ac">Financial · Literacy · Ownership · Wellness</div>
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          <span>Live Class — Tuesday April 29th · 7PM ET</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② ABOUT KRYSTLE -->
+<section class="section" style="background:var(--forest);" id="about">
+  <div class="si">
+    <div class="about-grid">
+      <div class="acard">
+        <div class="avatar">K</div>
+        <div class="aname">Krystle K.</div>
+        <div class="atitle">Founder · FLOW with Krystle</div>
+        <div class="adivider"></div>
+        <div class="astats">
+          <div class="astat"><div class="astat-n">15+</div><div class="astat-l">years of corporate experience</div></div>
+          <div class="astat"><div class="astat-n">$1B+</div><div class="astat-l">in revenue programs managed</div></div>
+          <div class="astat"><div class="astat-n">1,000+</div><div class="astat-l">professionals trained</div></div>
+          <div class="astat"><div class="astat-n">4x</div><div class="astat-l">marathoner &amp; Hyrox finisher</div></div>
+        </div>
+        <div class="adivider"></div>
+        <div class="apills">
+          <div class="apill">Salesforce</div>
+          <div class="apill">USATF Coach</div>
+          <div class="apill">Marathoner</div>
+          <div class="apill">Hyrox</div>
+        </div>
+      </div>
+      <div>
+        <div class="aquote">"I built this class so you know what<br><span class="gold">I had to find out the long way.</span>"</div>
+        <p class="astory">I grew up without anyone to teach me about money — and the corporate world didn't slow down to explain it. From day one I was handed financial decisions that carried real weight: retirement accounts, investment options, benefits elections. The kind of things everyone around me seemed to already understand. I learned by asking questions, quietly Googling things I was embarrassed not to know, and piecing it together on my own. I figured it out — but I shouldn't have had to.</p>
+        <p class="astory">I spent the next 15+ years in corporate America — managing upward of $1 billion in revenue programs and training over 1,000 sales professionals how to communicate complex ideas simply and get people to take action. And somewhere along the way, I realized: that's exactly what financial education needs. Not more jargon. Not more charts. Just someone who can break it down in plain English and help you take the first step.</p>
+        <p class="astory">I built FLOW with Krystle because nobody built it for me. FLOW exists to help people navigate the most important topics around wealth and health — and to help you flow through life with awareness and understanding. Because when you understand both, everything changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ LIVE CLASS -->
+<section class="section" style="background:var(--dark);" id="register">
+  <div class="si">
+    <div class="live-grid">
+      <div>
+        <div class="slabel">Live Virtual Class · One Night Only</div>
+        <h2 class="stitle">Join Us <span class="gold">Live</span> on April 29th</h2>
+        <p class="ssub">One night. One class. Everything you need to finally start investing — no experience required, no judgment, no jargon.</p>
+        <div class="ecard">
+          <div class="ecard-hdr">📅 Event Details</div>
+          <div class="ecard-grid">
+            <div class="edtl"><div class="edtl-lbl">Date</div><div class="edtl-val">April 29</div><div class="edtl-sub">Tuesday, 2025</div></div>
+            <div class="edtl"><div class="edtl-lbl">Time</div><div class="edtl-val">7:00 PM ET</div><div class="edtl-sub">60 min · Live on Google Meet</div></div>
+            <div class="edtl"><div class="edtl-lbl">Format</div><div class="edtl-val">Interactive</div><div class="edtl-sub">Live chat Q&amp;A included</div></div>
+          </div>
+        </div>
+        <div class="for-lbl">This class is for you if…</div>
+        <div class="for-pills">
+          <div class="for-pill">You think you need a lot of money before you can start investing</div>
+          <div class="for-pill">Everyone around you seems to "get" investing but nobody ever explained it</div>
+          <div class="for-pill">You keep saying "I'll start when I have more money" — and that day never comes</div>
+          <div class="for-pill">You want to leave something behind for your kids but don't know where to start</div>
+          <div class="for-pill">You have a savings account but a voice in the back of your head says it's not enough</div>
+        </div>
+        <div class="cur-lbl">What we'll cover</div>
+        <div class="cur-grid">
+          <div class="cur-item"><div class="chk">✓</div><span>How to start investing with whatever you have — even $5</span></div>
+          <div class="cur-item"><div class="chk">✓</div><span>Roth IRA &amp; 401(k) explained in plain English</span></div>
+          <div class="cur-item"><div class="chk">✓</div><span>Why your money is losing value sitting in savings</span></div>
+          <div class="cur-item"><div class="chk">✓</div><span>Index funds, ETFs &amp; the S&amp;P 500 simplified</span></div>
+          <div class="cur-item"><div class="chk">✓</div><span>How compound interest builds generational wealth</span></div>
+          <div class="cur-item"><div class="chk">✓</div><span>Your step-by-step action plan to start this week</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="pcard">
+          <div class="pcard-top">
+            <div class="pcard-lbl">Live class registration</div>
+            <div class="pcard-amt">$25</div>
+            <div class="pcard-desc">One-time · Full live class + chat Q&amp;A</div>
+          </div>
+          <div class="pcard-body">
+            <div class="inc-item"><span class="inc-icon">✓</span>60-minute live Investing 101 class</div>
+            <div class="inc-item"><span class="inc-icon">✓</span>Live chat Q&amp;A — drop your questions throughout</div>
+            <a href="https://flowwithkrystle.lemonsqueezy.com/checkout/buy/45ba2c96-966f-4c02-90ff-ccee220903d6" class="reg-btn">Register Now — $25 →</a>
+            <div class="spots"><div class="spots-dot"></div><span>Limited seats — register to hold your spot</span></div>
+            <div class="pnote">Secure checkout via Gumroad · Google Meet link sent after registration<br>Questions? <a href="/cdn-cgi/l/email-protection#2b4d47445c6b4d47445c5c425f43405952585f474e05484446" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="2d4b41425a6d4b41425a5a445945465f545e594148034e4240">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ MORE WAYS TO FLOW -->
+<section class="section" style="background:var(--forest);" id="more">
+  <div class="si">
+    <div class="slabel">More Ways to FLOW</div>
+    <h2 class="stitle">Continue Your <span class="gold">Journey</span></h2>
+    <p class="ssub">Whether you want to go deeper on your own or work with Krystle directly — there's a path for you.</p>
+    <div class="more-grid">
+      <div class="mcard">
+        <div class="mcard-top">
+          <div class="cs-tag">Coming Soon</div>
+          <div class="mcard-tag">On-Demand Course</div>
+          <div class="mcard-title">Investing 101 — <span class="gold">Watch Anytime</span></div>
+          <div class="mcard-desc">The full Investing 101 course on your schedule. Pay once, keep forever, watch at your own pace — no deadline, no seat limit.</div>
+          <div class="mcard-feat">
+            <div class="mcard-feat-item">Full 60-minute Investing 101 class</div>
+            <div class="mcard-feat-item">Lifetime access — rewatch anytime</div>
+            <div class="mcard-feat-item">Watch on any device, at any time</div>
+            <div class="mcard-feat-item">Zero experience needed</div>
+          </div>
+        </div>
+        <div class="mcard-bot">
+          <div class="mprice"><div class="mprice-n">$49</div><div class="mprice-d">one-time · lifetime access</div></div>
+          <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:13px;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Coming Soon</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.38);">Join the live class to be first notified</div>
+          </div>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-top">
+          <div class="mcard-tag">Private Session</div>
+          <div class="mcard-title">1:1 <span class="gold">Financial Clarity</span> Session</div>
+          <div class="mcard-desc">A private 45-minute session built around your specific financial situation. Not generic advice — a personalized action plan you can start using the same day.</div>
+          <div class="mcard-feat">
+            <div class="mcard-feat-item">Private 45-min Google Meet with Krystle K.</div>
+            <div class="mcard-feat-item">Full review of your financial picture</div>
+            <div class="mcard-feat-item">Personalized 3-step action plan</div>
+            <div class="mcard-feat-item">Follow-up resource list after session</div>
+          </div>
+        </div>
+        <div class="mcard-bot">
+          <div class="mprice"><div class="mprice-n">$99</div><div class="mprice-d">45 minutes · private · personalized</div></div>
+          <a href="https://flowwithkrystle.lemonsqueezy.com/checkout/buy/f9df8b98-51bf-48fd-b7f8-62f70a2b4f3b" class="mbtn mbtn-solid">Book Your Session — $99 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ POSITIONING STATEMENT -->
+<section class="pos-section">
+  <div class="pos-inner">
+    <div class="pos-text">"You can't build wealth if you're not well —<br>and you can't be well if <span class="gold">money is keeping you up at night.</span>"</div>
+    <div class="pos-attr">— Krystle K. · Founder, FLOW with Krystle</div>
+  </div>
+</section>
+
+<!-- ⑥ FINAL CTA -->
+<section class="final">
+  <div class="final-inner">
+    <div class="final-title">Ready to<br><span class="gold">FLOW?</span></div>
+    <p class="final-sub">Join us live on April 29th for 60 minutes that could change the trajectory of your financial future. Or book a private 1:1 session and let's work through it together.</p>
+    <div class="final-btns">
+      <a href="https://flowwithkrystle.lemonsqueezy.com/checkout/buy/45ba2c96-966f-4c02-90ff-ccee220903d6" class="fbtn-p">Join Live — April 29th · $25 →</a>
+      <a href="https://flowwithkrystle.lemonsqueezy.com/checkout/buy/f9df8b98-51bf-48fd-b7f8-62f70a2b4f3b" class="fbtn-s">Book 1:1 Session — $99</a>
+    </div>
+    <div class="final-note">Secure checkout · Instant confirmation · No subscriptions · No hidden fees<br>Questions? <a href="/cdn-cgi/l/email-protection#d9bfb5b6ae99bfb5b6aeaeb0adb1b2aba0aaadb5bcf7bab6b4" style="color:rgba(201,168,76,0.6);"><span class="__cf_email__" data-cfemail="b8ded4d7cff8ded4d7cfcfd1ccd0d3cac1cbccd4dd96dbd7d5">[email&#160;protected]</span></a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">FLOW with Krystle</div>
+  <div class="footer-ac">Financial · Literacy · Ownership · Wellness</div>
+  <div 
